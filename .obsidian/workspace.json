@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Labs/Labs 1 Brute Force Detection.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Labs 1 Brute Force Detection"
+              "title": "README"
             }
           }
         ],
@@ -216,8 +216,8 @@
   },
   "active": "9a17837c8d2a7471",
   "lastOpenFiles": [
-    "README.md.md",
     "Labs/Labs 1 Brute Force Detection.md",
+    "README.md",
     "Windows Client.md",
     "Windows Server Setup.md",
     "Kali.md",
