@@ -42,10 +42,13 @@ Before creating VMs, set up an isolated network in VirtualBox:
 | Kali Linux          | 2GB     | 2 cores    | 40GB     | Kali Linux          |
 
 ## Machine Setup
-- [[Windows Server Setup]]
-- [[Windows Client]]
-- [[Splunk-Ubuntu Setup]]
+- [Windows Server Setup](Windows%20Server%20Setup.md)
+- [Windows Client](./Windows%20Client)
+- [Splunk-Ubuntu Setup](./Splunk-Ubuntu%20Setup)
 
+Note: 
+- Remember to sync time
+- If log options of Splunk forwarder installation are ticked, then check `C:\Program Files\SplunkUniversalForwarder\etc\apps\SplunkUniversalForwarder\local\inputs.conf`. That yours place for inputs file. Careful with duplication.
 ## IP Assignment Table
 
 | VM                  | Hostname        | Static IP       | Gateway        | DNS             |
@@ -58,4 +61,4 @@ Before creating VMs, set up an isolated network in VirtualBox:
 
 # Labs
 
-- [Labs 1 Brute Force Detection](./Labs/Labs%201%20Brute%20Force%20Detection)
+- [Labs 1 Brute-Force Detection with Splunk](Labs/Labs%201%20Brute-Force%20Detection%20with%20Splunk.md)

@@ -51,10 +51,7 @@ During installation:
 - Accept the license and choose **An on-premises Splunk Enterprise Instance**.
 - Leave **SSL Certificate** and **SSL Root CA** fields blank and click **Next**.
 - Select **Install as Local System**.
-
-![[assets/Pasted image 20260311115741.png]]
-
-
+- LEAVE LOGS SELECTION BLANK and click next
 - Credential: `admin` / `<your-generated-password>`
 - **Deployment Server:** Leave blank.
 - **Receiving Indexer:**
@@ -107,39 +104,60 @@ C:\Program Files\SplunkUniversalForwarder\etc\system\local\outputs.conf
 ```ini
 [WinEventLog://Application]
 index = windows
-disabled = false
 renderXml = true
-source = XmlWinEventLog:Application
+start_from = oldest
+checkpointInterval = 5
 
 [WinEventLog://Security]
 index = windows
-disabled = false
 renderXml = true
-source = XmlWinEventLog:Security
+start_from = oldest
+checkpointInterval = 5
 
 [WinEventLog://System]
 index = windows
-disabled = false
 renderXml = true
-source = XmlWinEventLog:System
+start_from = oldest
+checkpointInterval = 5
 
 [WinEventLog://Microsoft-Windows-Sysmon/Operational]
 index = windows
-disabled = false
 renderXml = true
-source = XmlWinEventLog:Microsoft-Windows-Sysmon/Operational
+start_from = oldest
+checkpointInterval = 5
 
 [WinEventLog://Microsoft-Windows-PowerShell/Operational]
 index = windows
-disabled = false
 renderXml = true
-source = XmlWinEventLog:Microsoft-Windows-PowerShell/Operational
+start_from = oldest
+checkpointInterval = 5
 
 [WinEventLog://Microsoft-Windows-WMI-Activity/Operational]
 index = windows
-disabled = false
 renderXml = true
-source = XmlWinEventLog:Microsoft-Windows-WMI-Activity/Operational
+start_from = oldest
+checkpointInterval = 5
+
+
+# Domain Controller logs
+
+[WinEventLog://Directory Service]
+index = windows
+renderXml = true
+start_from = oldest
+checkpointInterval = 5
+
+[WinEventLog://DNS Server]
+index = windows
+renderXml = true
+start_from = oldest
+checkpointInterval = 5
+
+[WinEventLog://Microsoft-Windows-GroupPolicy/Operational]
+index = windows
+renderXml = true
+start_from = oldest
+checkpointInterval = 5
 ```
 
 ### outputs.conf

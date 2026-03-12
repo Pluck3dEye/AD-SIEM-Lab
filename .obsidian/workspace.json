@@ -13,44 +13,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md.md",
+                "file": "Labs/Labs 1 Brute-Force Detection with Splunk.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README.md"
-            }
-          },
-          {
-            "id": "9d4b433a0887d2f0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Windows Server Setup.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Windows Server Setup"
-            }
-          },
-          {
-            "id": "9a17837c8d2a7471",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "README"
+              "title": "Labs 1 Brute-Force Detection with Splunk"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -214,18 +185,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "9a17837c8d2a7471",
+  "active": "93a8cd914113b9bb",
   "lastOpenFiles": [
-    "Labs/Labs 1 Brute Force Detection.md",
-    "README.md",
-    "Windows Client.md",
-    "Windows Server Setup.md",
-    "Kali.md",
-    "Labs",
     "Splunk-Ubuntu Setup.md",
-    "assets/Pasted image 20260311174026.png",
-    "assets/Pasted image 20260311165135.png",
-    "assets/Pasted image 20260311171433.png",
     "assets/Pasted image 20260311171456.png",
     "assets/Pasted image 20260311153548.png",
     "assets/Pasted image 20260311152735.png",
@@ -233,6 +195,16 @@
     "assets/Pasted image 20260311135428.png",
     "assets/Pasted image 20260311130238.png",
     "assets/Pasted image 20260311115741.png",
+    "assets/Pasted image 20260311103540.png",
+    "assets/Pasted image 20260311103414.png",
+    "assets/Pasted image 20260310222818.png",
+    "Windows Client.md",
+    "README.md",
+    "Labs/Labs 1 Brute-Force Detection with Splunk.md",
+    "Windows Server Setup.md",
+    "Kali.md",
+    "Labs/assets",
+    "Labs",
     "Logs",
     "assets",
     "Tier 4/Introduction to Dynamic Analysis with WinDbg/Introduction to Dynamic Analysis with WinDbg.md",
@@ -250,7 +222,6 @@
     "Tier 3 CAPE/Windows Lateral Movement/Windows Lateral Movement.md",
     "Content/CAPE.md",
     "Tier 3 CAPE/Database.base",
-    "Tier 3 CAPE/MSSQL, Exchange, and SCCM Attacks/assets",
     "Tier 3 CAPE/Introduction to Windows Evasion Techniques/Introduction to Windows Evasion Techniques.md",
     "Tier 3 CAPE/Intro to C2 Operations with Sliver/Intro to C2 Operations with Sliver.md",
     "Tier 3 CAPE/ADCS Attacks/ADCS Attacks.md",
@@ -260,7 +231,6 @@
     "Tier 3 CAPE/Active Directory BloodHound/Active Directory BloodHound.md",
     "Tier 3 CAPE/Active Directory LDAP/Active Directory LDAP.md",
     "Tier 3/Active Directory Powerview/Untitled 1.md",
-    "Tier 3/Active Directory Powerview/Untitled.md",
-    "CAPE/Active Directory Bloodhound/Walkthrough/Walkthrough.md"
+    "Tier 3/Active Directory Powerview/Untitled.md"
   ]
 }
