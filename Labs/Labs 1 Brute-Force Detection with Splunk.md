@@ -16,11 +16,11 @@ Simulate an RDP brute-force attack from the Kali attacker machine against a doma
 
 ---
 
-## Phase 1 — Target Preparation (WS01)
+## Target Preparation (WS01)
 
 All commands in this phase are run on **WS01** in a PowerShell terminal as **Administrator**.
 
-### 1.1 Enable Remote Desktop
+### Enable Remote Desktop
 
 ```powershell
 Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0
@@ -43,7 +43,7 @@ PSDrive            : HKLM
 PSProvider         : Microsoft.PowerShell.Core\Registry
 ```
 
-### 1.2 Grant RDP Access to the Target Account
+### Grant RDP Access to the Target Account
 
 ```powershell
 Add-LocalGroupMember -Group "Remote Desktop Users" -Member "CORP\jsmith"
@@ -61,7 +61,7 @@ ObjectClass Name        PrincipalSource
 User        CORP\jsmith ActiveDirectory
 ```
 
-### 1.3 Allow ICMP (Ping)
+### Allow ICMP (Ping)
 
 Enable the firewall rule for ICMPv4 echo requests across all profiles:
 
@@ -72,11 +72,11 @@ Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Profile Domain,Private,Public
 
 ---
 
-## Phase 2 — Attack Simulation (Kali)
+## Attack Simulation (Kali)
 
 All commands in this phase are run on the **Kali attacker** machine.
 
-### 2.1 Verify Target Connectivity
+### Verify Target Connectivity
 
 Confirm RDP port `3389` is open on the target:
 
@@ -94,13 +94,13 @@ PORT     STATE SERVICE
 MAC Address: 08:00:27:9F:DA:FF (Oracle VirtualBox virtual NIC)
 ```
 
-### 2.2 Prepare the Attack Environment
+### Prepare the Attack Environment
 
 ```bash
 cd ~/Desktop && mkdir -p ADLab && cd ADLab
 ```
 
-### 2.3 Create a Password List
+### Create a Password List
 
 Create a wordlist with common passwords. The last entry is the correct password to simulate a successful brute-force:
 
@@ -124,7 +124,7 @@ JohnPassword123!
 EOF
 ```
 
-### 2.4 Execute the Brute-Force Attack
+### Execute the Brute-Force Attack
 
 Use **Hydra** to perform the RDP brute-force attack:
 
@@ -178,7 +178,7 @@ Hydra found the valid credential `jsmith` / `JohnPassword123!` after 14 failed a
 
 ## Detection & Analysis (Splunk)
 
-### 3.1 Search for Authentication Events
+### Search for Authentication Events
 
 Open **Splunk Web** (`http://192.168.10.10:8000`) and run the following SPL query:
 
@@ -188,7 +188,7 @@ index=windows host="WS01" EventCode IN (4624, 4625)
 | sort -_time
 ```
 
-### 3.2 Results
+### Results
 
 ![](assets/1d248fb85ded59a0cd787c0dfffd4adb.png)
 
@@ -224,3 +224,90 @@ The Splunk logs show **14 consecutive failed logon events (Event ID 4625)** foll
 ![](assets/39e7be35f8d776c0aa54c9e4fb979e7e.png)
 
 - [Brute Force: Password Guessing, Sub-technique T1110.001 - Enterprise | MITRE ATT&CK®](https://attack.mitre.org/techniques/T1110/001/)
+
+
+
+---
+
+Note
+
+Some how `xfreerdp3` does not work.
+```
+[09:44:18:855] [36037:00008cc7] [INFO][com.freerdp.core] - [rdp_print_errinfo]: ERRINFO_RPC_INITIATED_DISCONNECT (0x00000001):The disconnection was initiated by an administrative tool on the server in another session.
+```
+
+Try to enable WinRM
+
+```
+winrm quickconfig
+```
+
+Enable PowerShell remoting
+```
+Enable-PSRemoting -Force
+```
+
+Add `jsmith` to `Remote management Users`
+```
+Add-LocalGroupMember -Group "Remote Management Users" -Member "corp\jsmith"
+```
+
+Then verify with:
+```
+net localgroup "Remote Desktop Users"
+```
+
+```
+└─$ evil-winrm -i 192.168.10.21 -u jsmith -p 'JohnPassword123!'
+
+Evil-WinRM shell v3.9
+Warning: Remote path completions is disabled due to ruby limitation: undefined method `quoting_detection_proc' for module Reline 
+Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+
+Info: Establishing connection to remote endpoint
+*Evil-WinRM* PS C:\Users\jsmith\Documents> 
+
+```
+
+
+Check this on Splunk with query `index=windows host="WS01" EventCode=4624 Logon_Type=3 user=jsmith src_ip="192.168.10.99"`
+
+![](assets/Pasted%20image%2020260313093956.png)
+
+
+The this should be `ID: T1021.006` - Remote Services: Windows Remote Management| Tactic: [Lateral Movement](https://attack.mitre.org/tactics/TA0008)
+
+
+---
+
+## Create alert for BF
+
+```
+index=windows EventCode=4625
+| bucket _time span=5m
+| stats count by _time Account_Name src_ip host
+| where count > 8
+| where src_ip != "::1"
+| eval MITRE_ID="T1110.001"
+| eval MITRE_Tactic="Credential Access"
+| eval MITRE_Technique="Brute Force - Password Guessing"
+| eval Severity="High"
+```
+
+
+
+![](assets/Pasted%20image%2020260313101006.png)
+
+![](assets/Pasted%20image%2020260313101237.png)
+
+
+
+
+
+---
+
+ref
+
+- [Randy's Windows Security Log Encyclopedia](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/default.aspx)
+- [Browse Windows Event Sources](https://www.myeventlog.com/search/browse)
+- 
