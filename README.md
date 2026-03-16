@@ -61,4 +61,5 @@ Note:
 
 # Labs
 
-- [Labs 1 Brute-Force Detection with Splunk](Labs/Labs%201%20Brute-Force%20Detection%20with%20Splunk.md)
+- [Lab 1 Brute-Force Detection with Splunk](Labs/Lab%201/Lab%201%20Brute-Force%20Detection%20with%20Splunk.md)
+- [Lab 2 LLMNR poisoning](Labs/Lab%202/Lab%202%20LLMNR%20poisoning.md)

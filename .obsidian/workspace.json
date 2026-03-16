@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Labs/Labs 1 Brute-Force Detection with Splunk.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Labs 1 Brute-Force Detection with Splunk"
+              "title": "README"
             }
           }
         ]
@@ -187,24 +187,26 @@
   },
   "active": "93a8cd914113b9bb",
   "lastOpenFiles": [
-    "Labs/assets/Pasted image 20260313101237.png",
-    "Labs/assets/Pasted image 20260313101006.png",
+    "Kali.md",
+    "Windows Server Setup.md",
+    "Labs/Lab 2/Lab 2 LLMNR poisoning.md",
+    "Labs/Lab 1/Lab 1 Brute-Force Detection with Splunk.md",
+    "README.md",
+    "Labs/Lab 2/assets/wireshark_packet_sequence.svg",
+    "Labs/Lab 2/assets/Pasted image 20260316141244.png",
+    "Labs/Lab 2/assets",
+    "Labs/Lab 2",
+    "Labs/Lab 1",
+    "Labs/Lab 1/assets/Pasted image 20260313101237.png",
+    "Labs/Lab 1/assets/Pasted image 20260313101006.png",
     "Labs/assets/Pasted image 20260313100809.png",
-    "Labs/assets/Pasted image 20260313093956.png",
+    "Labs/Lab 1/assets/Pasted image 20260313093956.png",
     "Splunk-Ubuntu Setup.md",
     "assets/Pasted image 20260311171456.png",
     "assets/Pasted image 20260311153548.png",
     "assets/Pasted image 20260311152735.png",
-    "assets/Pasted image 20260311152710.png",
-    "assets/Pasted image 20260311135428.png",
-    "assets/Pasted image 20260311130238.png",
-    "assets/Pasted image 20260311115741.png",
     "Windows Client.md",
-    "README.md",
-    "Labs/Labs 1 Brute-Force Detection with Splunk.md",
-    "Windows Server Setup.md",
-    "Kali.md",
-    "Labs/assets",
+    "Labs/Lab 1/assets",
     "Labs",
     "Logs",
     "assets",
@@ -214,15 +216,12 @@
     "Tier 4/Introduction to Dynamic Analysis with WinDbg",
     "Tier 4/Process Injection Attacks and Detection/assets",
     "Tier 3 CAPE/Active Directory Powerview/Active Directory Powerview.md",
-    "Tier 4/Process Injection Attacks and Detection",
-    "Tier 4",
     "Tier 3 CAPE/Active Directory Trust Attacks/Active Directory Trust Attacks.md",
     "Tier 3 CAPE/MSSQL, Exchange, and SCCM Attacks/MSSQL, Exchange, and SCCM Attacks.md",
     "Tier 3 CAPE/NTLM Relay Attacks/NTLM Relay Attacks.md",
     "Tier 3 CAPE/Using CrackMapExec/Using CrackMapExec.md",
     "Tier 3 CAPE/Windows Lateral Movement/Windows Lateral Movement.md",
     "Content/CAPE.md",
-    "Tier 3 CAPE/Database.base",
     "Tier 3 CAPE/Introduction to Windows Evasion Techniques/Introduction to Windows Evasion Techniques.md",
     "Tier 3 CAPE/Intro to C2 Operations with Sliver/Intro to C2 Operations with Sliver.md",
     "Tier 3 CAPE/ADCS Attacks/ADCS Attacks.md",
@@ -231,7 +230,6 @@
     "Tier 3 CAPE/DACL Attacks I/DACL Attacks I.md",
     "Tier 3 CAPE/Active Directory BloodHound/Active Directory BloodHound.md",
     "Tier 3 CAPE/Active Directory LDAP/Active Directory LDAP.md",
-    "Tier 3/Active Directory Powerview/Untitled 1.md",
-    "Tier 3/Active Directory Powerview/Untitled.md"
+    "Tier 3/Active Directory Powerview/Untitled 1.md"
   ]
 }

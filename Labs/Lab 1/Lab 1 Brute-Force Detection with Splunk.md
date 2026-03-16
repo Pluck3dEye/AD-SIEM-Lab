@@ -190,7 +190,7 @@ index=windows host="WS01" EventCode IN (4624, 4625)
 
 ### Results
 
-![](assets/1d248fb85ded59a0cd787c0dfffd4adb.png)
+![](Lab%201/assets/1d248fb85ded59a0cd787c0dfffd4adb.png)
 
 The query returns a sequence of authentication events from the Windows Security log on `WS01`, revealing the brute-force pattern.
 ### Relevant Windows Security Events
@@ -221,7 +221,7 @@ The Splunk logs show **14 consecutive failed logon events (Event ID 4625)** foll
 | **Credential Access** | [T1110.001](https://attack.mitre.org/techniques/T1110/001/) | Brute Force: Password Guessing           |
 | **Initial Access**    | [T1078](https://attack.mitre.org/techniques/T1078/)         | Valid Accounts                           |
 | **Lateral Movement**  | [T1021.001](https://attack.mitre.org/techniques/T1021/001/) | Remote Services: Remote Desktop Protocol |
-![](assets/39e7be35f8d776c0aa54c9e4fb979e7e.png)
+![](Lab%201/assets/39e7be35f8d776c0aa54c9e4fb979e7e.png)
 
 - [Brute Force: Password Guessing, Sub-technique T1110.001 - Enterprise | MITRE ATT&CK®](https://attack.mitre.org/techniques/T1110/001/)
 
@@ -272,7 +272,7 @@ Info: Establishing connection to remote endpoint
 
 Check this on Splunk with query `index=windows host="WS01" EventCode=4624 Logon_Type=3 user=jsmith src_ip="192.168.10.99"`
 
-![](assets/Pasted%20image%2020260313093956.png)
+![](Lab%201/assets/Pasted%20image%2020260313093956.png)
 
 
 The this should be `ID: T1021.006` - Remote Services: Windows Remote Management| Tactic: [Lateral Movement](https://attack.mitre.org/tactics/TA0008)
@@ -296,9 +296,9 @@ index=windows EventCode=4625
 
 
 
-![](assets/Pasted%20image%2020260313101006.png)
+![](Lab%201/assets/Pasted%20image%2020260313101006.png)
 
-![](assets/Pasted%20image%2020260313101237.png)
+![](Lab%201/assets/Pasted%20image%2020260313101237.png)
 
 
 

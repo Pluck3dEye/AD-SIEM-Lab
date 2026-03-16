@@ -1,0 +1,73 @@
+<svg width="100%" viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10"
+          refX="9" refY="5"
+          markerWidth="7" markerHeight="7"
+          orient="auto-start-reverse">
+    <path d="M1 1L9 5L1 9"
+          fill="none"
+          stroke="context-stroke"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </marker>
+
+  <style>
+    text { font-family: sans-serif; }
+    .th-blue  { font-size: 14px; font-weight: 500; fill: #0C447C; }
+    .ts-blue  { font-size: 12px; font-weight: 400; fill: #185FA5; }
+    .th-red   { font-size: 14px; font-weight: 500; fill: #791F1F; }
+    .ts-red   { font-size: 12px; font-weight: 400; fill: #A32D2D; }
+    .ts-muted { font-size: 12px; font-weight: 400; fill: #666; }
+    .ts-dark  { font-size: 12px; font-weight: 400; fill: #333; }
+    .label-blue  { font-size: 12px; font-weight: 500; fill: #0C447C; }
+    .label-red   { font-size: 12px; font-weight: 500; fill: #A32D2D; }
+    .label-amber { font-size: 12px; font-weight: 500; fill: #854F0B; }
+  </style>
+</defs>
+
+<!-- Actor: WS01 -->
+<rect x="40" y="20" width="140" height="44" rx="8" stroke-width="0.5" fill="#E6F1FB" stroke="#185FA5"/>
+<text class="th-blue" x="110" y="42" text-anchor="middle" dominant-baseline="central">WS01 :21</text>
+
+<!-- Actor: Kali -->
+<rect x="500" y="20" width="140" height="44" rx="8" stroke-width="0.5" fill="#FCEBEB" stroke="#A32D2D"/>
+<text class="th-red" x="570" y="42" text-anchor="middle" dominant-baseline="central">Kali :99</text>
+
+<!-- Lifelines -->
+<line x1="110" y1="64" x2="110" y2="400" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="570" y1="64" x2="570" y2="400" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+
+<!-- Packet 1 -->
+<line x1="110" y1="100" x2="570" y2="100" stroke="#378ADD" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text class="label-blue" x="350" y="93" text-anchor="middle">① LLMNR Query — UDP 5355 → 224.0.0.252</text>
+<text class="ts-muted" x="350" y="113" text-anchor="middle">"Who is fakeshare?" (multicast, all hosts receive)</text>
+
+<!-- Packet 2 -->
+<line x1="570" y1="153" x2="110" y2="153" stroke="#E24B4A" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text class="label-red" x="350" y="146" text-anchor="middle">② LLMNR Response — UDP 5355 → 192.168.10.21</text>
+<text class="ts-muted" x="350" y="166" text-anchor="middle">"fakeshare is at 192.168.10.99" (lie)</text>
+
+<!-- Packet 3 -->
+<line x1="110" y1="206" x2="570" y2="206" stroke="#185FA5" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text class="label-blue" x="350" y="199" text-anchor="middle">③ SMB Negotiate — TCP 445</text>
+<text class="ts-muted" x="350" y="219" text-anchor="middle">WS01 initiates connection to fake server</text>
+
+<!-- Packet 4 -->
+<line x1="110" y1="256" x2="570" y2="256" stroke="#BA7517" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text class="label-amber" x="350" y="249" text-anchor="middle">④ NTLMSSP_NEGOTIATE — TCP 445</text>
+<text class="ts-muted" x="350" y="269" text-anchor="middle">NTLM auth begins, client announces capabilities</text>
+
+<!-- Packet 5 -->
+<line x1="570" y1="308" x2="110" y2="308" stroke="#E24B4A" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text class="label-red" x="350" y="301" text-anchor="middle">⑤ NTLMSSP_CHALLENGE — TCP 445</text>
+<text class="ts-muted" x="350" y="321" text-anchor="middle">Kali sends 8-byte random nonce to victim</text>
+
+<!-- Packet 6 -->
+<line x1="110" y1="362" x2="570" y2="362" stroke="#854F0B" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text class="label-amber" x="350" y="355" text-anchor="middle">⑥ NTLMSSP_AUTH — TCP 445  ← hash captured</text>
+<text class="ts-muted" x="350" y="375" text-anchor="middle">jsmith::CORP + NTLMv2 response (crackable offline)</text>
+
+<!-- Highlight -->
+<rect x="42" y="344" width="596" height="44" rx="4" fill="none" stroke="#E24B4A" stroke-width="1" stroke-dasharray="4 2"/>
+</svg>
